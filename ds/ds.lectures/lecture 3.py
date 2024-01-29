@@ -119,7 +119,7 @@ def my_range (start,stop, step):
 
 adds all values of the step into a giant lst and continues the while loop until it reaches the end
 
-
+the entire runtime of the function is spend running my_range instead of running the for loop
 
 
 
