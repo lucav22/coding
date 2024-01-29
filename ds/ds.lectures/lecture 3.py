@@ -46,6 +46,18 @@ NOT SIMILAR
 instead it mutates the lst and its equivalent to extend as stated previously
 
 
+for loops are used for iterable-collections
+an object that produces an inter via the syntax inter(iterable object)
+
+lst = [1,2,3]
+lst_iter = iter(lst)
+
+this produces an iterator since it was closed in the iter object
+
+s = "abc"
+s_iter = iter(s)
+
+again the iterator objects is created
 
 
 
