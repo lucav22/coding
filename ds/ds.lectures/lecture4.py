@@ -77,6 +77,30 @@ Performance: Measure the resources that is used
 
 
 
+prime is divisors are 1 and num
+complimentary is d * k equal or divisors of 100
+
+
+
+
+def is_prime(num):
+    count_divs=0
+
+    for curr in range (1,num+1):
+        if (num%curr == 0):
+            count_divs += 1
+    if (count_divs==2)
+        return True
+    else:
+        return False
+
+takes the range of the value from 1 to the ending of the number (accounting for range being exclusive)
+runs an if statement for a mod for each number and if ther eis no remainder, then the count is increased since that means
+a number is divided evenly, if the count reaches 2 that means there are two numbers thats divide evenly
+
+
+
+
 
 
 '''
