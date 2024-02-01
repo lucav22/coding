@@ -95,10 +95,17 @@ def is_prime(num):
         return False
 
 takes the range of the value from 1 to the ending of the number (accounting for range being exclusive)
-runs an if statement for a mod for each number and if ther eis no remainder, then the count is increased since that means
+runs an if statement for a mod for each number and if there eis no remainder, then the count is increased since that means
 a number is divided evenly, if the count reaches 2 that means there are two numbers thats divide evenly
 
+we are trying to prove that there is no factor in the other half of the number
 
+so we take k and only the second half of the range so we do k> num/2
+
+then we take k's complementary divisor which would be d which is another d = num/k
+
+which then equals to d < 2, meaning that the only number left is d = 1  so k = num and that the only divisor in the
+second half is the number itself
 
 
 
