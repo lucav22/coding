@@ -1,0 +1,2 @@
+def shift(lst, k):
+    
