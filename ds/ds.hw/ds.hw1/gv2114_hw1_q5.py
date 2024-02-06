@@ -6,5 +6,3 @@ def fibs(n):
         # the new spot of b is taken up by the addition of the current numbers
 
 
-for curr in fibs(8):
-    print(curr)
