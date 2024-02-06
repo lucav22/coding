@@ -47,7 +47,7 @@ class Vector:
             raise ValueError("dimensions must agree")
         result = Vector(len(self))
         for j in range(len(self)):
-            result[j] = self[j] + other[j]
+            result[j] = self[j] - other[j]
         return result
 
     def __neg__(self): #same here to add
