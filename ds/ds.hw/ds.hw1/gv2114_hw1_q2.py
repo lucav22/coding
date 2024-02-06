@@ -1,6 +1,6 @@
-def shift(lst, k, shift = None):
+def shift(lst, k, shift = 'left'):
     for i in range(k):
-        if shift is None:
+        if shift == 'left':
             lst.append(lst[0])  # index 0 since value being appended is always
             # what is at the front
             lst.pop(0)  # same here for pop always the first index being removed
