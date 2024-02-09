@@ -1,1 +1,23 @@
 5. return x ^ 2 
+6. return x & ~(1<<4)
+7. return ((x & 7) << 6 | ((x & 7) << 3 ) | (x & 7))
+8. return (x & 352) == 288
+9. I believe that Rupert will difficulty moving forward as
+this will create problems in the future since the logical AND
+operator will either turn a 1 if they are true; otherwise it will
+return a 0. 
+For a bitwise AND operator it will do a similar thing as explained previously
+However, the biggest comparison is that the logical AND will only return
+true or flase, whereas the bitwise AND will return an integer value depending 
+on the bitwise operation.
+Example 1: 
+4 && 2 will give you a true since the values are both non-zero
+4 & 2 will give you 0, because in binary, 4 is 0100, and 2 is 0010
+since they have nothing in common.
+Example 2:
+0 && 4 evaluates to false since the first value is 0 and thus 
+the second number does not matter
+0 & 4 will also be 0, however, this is redundant since 0 will
+determine the outcome of the function
+As a result, they each serve their respective purpose, especially
+if you neext a numerical result or to prevent unecessary evaluations
