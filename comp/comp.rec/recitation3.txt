@@ -1,0 +1,30 @@
+1. 10, 11, 11, 3, 3, 5,5
+
+2.a. the value found in rg3 will be stored in rg1, the value in rg3 will remain the same
+2.b. the value found in rg2 will be added the binary value of 5 and it will be stored again in rg2
+2.c. the values in rg1 and rg3 will be compared to see if they are the same, if they are the same then the zero flag will be 1, if not then it will be 0
+2.d. if the previous instruction resulted in the zero flag being set, the program will jump by 3 instruction in the program 
+
+
+3. 1. the binary number of 2 is stored to register while register 1 is left alone
+3. 2. the binary number of 4 is stored to register 1 while register 0 is still 2
+3. 3. the values in the register are added together so 4+2 which is 6 and is stored in the destination register so r1 has 6 and
+3. 4. the value in register 1, which is 6, will get subtracted a 1 from it and results in a 5 which will be stored in r1 while r0 is unchanged as 2
+
+4. a. 101000101100
+4. b. 110100010110
+4. c. 111100111101
+4. d. 001100000010
+
+5. a. {add, Rxx, Rxx, 4'b1000}
+5. b. {jmp, Rxx, Rxx, 4'b0110}
+5. c. {sub, R2, R3, 4'b0000}
+5. d. {movi, Rxx, R2, 4'b1011}
+
+6. a. Rg0 = 4 Rg1 = 8 
+6. b. Rg0 = 5 Rg1 = 0
+
+7.  {movi, Rxx, Rg3, 4'b1111}
+    {subi, Rxx, Rg3, 4'b0001}
+    {jnz, Rxx, Rxx, 4'b1111}
+    {jmp, Rxx, Rxx, 4'b0000}
