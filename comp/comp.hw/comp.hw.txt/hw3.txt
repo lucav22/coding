@@ -1,4 +1,4 @@
-1.
+1. 100, 011, 110, 111, 101, 001
 2.a. 111010110000
 the cmp function is comparing the values in the 
 2nd and 3rd registers while not being changed, rg 0 and 1 are untouched, and depending on the values in the registers
