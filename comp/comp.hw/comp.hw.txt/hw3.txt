@@ -31,4 +31,33 @@ The instruction occuring here will be a jump instruction that is usually found a
 The registers will remain untouched as well, along with the zero flag, and the program will stop here since it will not increase the 
 program counter, unallowing for the continuing through the code.
 3.d. {jmp, Rxx, Rxx, 4'b0001}
+The instruction here will result in a jump instruction that will move the program counter by the binary equivalent of 4'b0001, resulting in the program counter moving by 1.
+The registers will reamin unchanged and the zero flag will also not be touched as well. The only exception is if the program counter is the last line, 15,
+the program counter will then encounter an overflow which will result in the program counter being set at 0000, and restarting the code. 
+
+4.a. myROM[3]
+
+4.b. myROM[5]
+
+4.c. myROM[6] 
+
+5.a. 15, the instruction will be run until the comparison instruction before it on myROM[6] turns on the zero flag which then prompts,
+the jump zero inttruction to kick in and skip the ROM Cell 8. Since the value in rg 1 is 15, the subtraction instruction will need to be ran until it makes 
+the value 0.
+
+5.b. 1, this instruction wil be run whenever the previous function is skipped since the jump zero instruction will jump 3 program instructions,
+which ends landing the program counter on my ROM 10 and then continuing to the following jmp instruction, never returning to ROM 10 again.
+
+5.c. 0, same here since the previous instrcution of a jump in myROM[11], will increase the program count by 4, that will result in the program count being at 15 and the instruction
+on that line is a 0 jump, signaling the end of the code. 
+
+5.d. 0, the same happends here except for a different reason as the first instruction found in myROM[0] does a jump of 2, meaning that the following instruction after 
+is the one found in myROM [2]. As a result, the instruction in myROM [1] will never be touched since the code never returns to myROM [1]. 
+
+5.e. The program is counting down from 15 to 0 and whenever it reaches that point, another value in a different register is decreased from 15 to 14, signaling the end of the program. 
+The assembly code is acting a loop, meaning that it can be ran without manually having to write out a subtract instruction multiple times, and instead only written once. The way the loop works
+is by comparison, as it will continue running until the value found in the register that is being looped on reaches 0. Once that occurs, the program skips over the comparion opeartion and moves on to subtract 
+a value from the second register present and finalizing the code. 
+
+
 
