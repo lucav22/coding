@@ -1,0 +1,34 @@
+1.
+2.a. 111010110000
+the cmp function is comparing the values in the 
+2nd and 3rd registers while not being changed, rg 0 and 1 are untouched, and depending on the values in the registers
+it will alter the zero flag. If they are the same, then the zero flag is set to 1, 
+however, if they are not the same, the zero flag is set to 0, the program counter will then move forward
+with the next line in the program.
+2.b. 101000110000
+the add function is adding the values in the 0 and the 3rd register,
+the value in the 0 register will remain unchanged, and the added value will rewrite the value in third register.
+The 1 and 2 register will be untouched and the zero flag is dependant on the value of the addition;
+if the addition results in a 0 then the zero flag will be set to 1. If its anything else then it will 
+be set to 0. After the addition, the program counter will be increased and move to the following line if 
+2.c. 001000000001
+the jump zero function is soley reliant on the zero flag being set.
+If the zero flag is not set, then nothing is going to occur and every register will remain untouched; also the program counter
+will not jump anywhere as well. If the zero flag is set then, the program will move to the instruction that is the result 
+of the current counter value and a 1 since the imm value is 0001. All the registers are left untouched, and the only special case 
+is if this is the instruction at line 15 of the program, it would then wrap around to the beginning as a loop until the jump instruction
+gets skipped or ended with a jmp, Rxx, Rxx, 4'b0000 line after it.
+
+3.a. {movi, RXX, Rg1, 4'b0011} 
+This will set the value in register 1 to the boolean equivalent of 4'b0011, which is 3, and the program counter will be increased
+by one, moving on to the next instruction. All other registers will remain unchanged.
+3.b. {add, Rg1, Rg1, 4'b0011}
+This instruction will add the value found in register 1 with the boolean equivalent of 4'b0011 which is 3, resulting in the equation Rg1 + 3 = #. 
+Rg1 one will retain the result of the sum that occured and its previous value will be replaced. The program counter is increased and the zero flag is also tested,
+if the result of this addition is not 0, then the zero flag will not be set; however, if the result is 0, then the zero flag will be set. 
+3.c. {jmp, Rxx, Rxx, 4'b0000}
+The instruction occuring here will be a jump instruction that is usually found at the end of a program in order to finalize the program counter. 
+The registers will remain untouched as well, along with the zero flag, and the program will stop here since it will not increase the 
+program counter, unallowing for the continuing through the code.
+3.d. {jmp, Rxx, Rxx, 4'b0001}
+
