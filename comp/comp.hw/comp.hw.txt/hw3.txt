@@ -41,18 +41,23 @@ the program counter will then encounter an overflow which will result in the pro
 
 4.c. myROM[6] 
 
-5.a. 15, the instruction will be run until the comparison instruction before it on myROM[6] turns on the zero flag which then prompts,
-the jump zero inttruction to kick in and skip the ROM Cell 8. Since the value in rg 1 is 15, the subtraction instruction will need to be ran until it makes 
-the value 0.
+5.a. 225, the instruction will be run until the comparison instruction before it on myROM[6] turns on the zero flag which then prompts,
+the jump zero instruction to kick in and skip the ROM Cell 8. Afterwards, the sub instruction found in myROM[9] will take 1 away from the value found in rg0 making it 14.
+The instruction in myROM[10] makes the function jump 8 steps to myROM[3] which compares rg0 to 0 and if the comparison is not true, the following jump zero instruction is ignored,
+resulting in rg1 to be set to the value of 15 again in myROM[15]. As a result, the original loop restarts, causing for another 15 iterations to occur before the same result is replicated 
+continously. The program will stop running only when the comparison instruction in myROM[3] results in the jz instruction being true which then would skip around the program to end in instruction
+myROM[1].
 
-5.b. 1, this instruction wil be run whenever the previous function is skipped since the jump zero instruction will jump 3 program instructions,
-which ends landing the program counter on my ROM 10 and then continuing to the following jmp instruction, never returning to ROM 10 again.
+5.b. 15, this instruction wil be run whenever the previous function is skipped since the jump zero instruction will jump 3 program instructions,
+which ends landing the program counter on my ROM 10 and then continuing to the following jmp instruction, which then restarts the inner loop as mentioned earlier. As a result, this subtraction instruction
+will be run 15 times until the rg0 will be 0 and the program stops. This is how the value in part a was found since this would run 15 times along with the inner loop running 15 times, so together
+it would be 15 x 15. 
 
-5.c. 0, same here since the previous instrcution of a jump in myROM[11], will increase the program count by 4, that will result in the program count being at 15 and the instruction
-on that line is a 0 jump, signaling the end of the code. 
+5.c. 0, since the previous instrcution of a jump in myROM[11], this will increase the program count by 8, ending up in myROM[3] and never going into the myROM [12-15]. Even other jumps such as
+the one in myROM[4] and myROM[7], it goes over the final lines as well and terminates the code at myROM[1].
 
-5.d. 0, the same happends here except for a different reason as the first instruction found in myROM[0] does a jump of 2, meaning that the following instruction after 
-is the one found in myROM [2]. As a result, the instruction in myROM [1] will never be touched since the code never returns to myROM [1]. 
+5.d. 1, as explained in the previous parts, this is the last line that is ran when the program is finished since when the comparison of the value found in rg0 is compared to 0, resulting in the zero flag being set,
+this allows for the zero jump to take action. This results in the code ending up on myROM[1], which is a jump that does not move the program counter i.e. the end of the program. 
 
 5.e. The program is counting down from 15 to 0 and whenever it reaches that point, another value in a different register is decreased from 15 to 14, signaling the end of the program. 
 The assembly code is acting a loop, meaning that it can be ran without manually having to write out a subtract instruction multiple times, and instead only written once. The way the loop works
