@@ -19,9 +19,10 @@ of the current counter value and a 1 since the imm value is 0001. All the regist
 is if this is the instruction at line 15 of the program, it would then wrap around to the beginning as a loop until the jump instruction
 gets skipped or ended with a jmp, Rxx, Rxx, 4'b0000 line after it.
 
-3.a. {movi, RXX, Rg1, 4'b0011} 
-This will set the value in register 1 to the boolean equivalent of 4'b0011, which is 3, and the program counter will be increased
-by one, moving on to the next instruction. All other registers will remain unchanged.
+3.a. {addi, RXX, Rg1, 4'b0011} 
+This instruction will add the value found in rg1 with the boolean equivalent that was provided of 4'b0011, which is 3, and the result will be stored in the Rg1. The equation can be displayed as
+Rg1 + 3 = #. Since this is an arithmetic instruction, the zero flag will be tested. If the result of the addition is 0, the zero flag will be set; if the result is not 0, the zero flag will not be set. 
+The program counter is also increased by 1, so after the addition is finished, the following instruction will occur. 
 3.b. {add, Rg1, Rg1, 4'b0011}
 This instruction will add the value found in register 1 with the boolean equivalent of 4'b0011 which is 3, resulting in the equation Rg1 + 3 = #. 
 Rg1 one will retain the result of the sum that occured and its previous value will be replaced. The program counter is increased and the zero flag is also tested,
@@ -36,9 +37,7 @@ The registers will reamin unchanged and the zero flag will also not be touched a
 the program counter will then encounter an overflow which will result in the program counter being set at 0000, and restarting the code. 
 
 4.a. myROM[3]
-
 4.b. myROM[5]
-
 4.c. myROM[6] 
 
 5.a. 225, the instruction will be run until the comparison instruction before it on myROM[6] turns on the zero flag which then prompts,
@@ -59,10 +58,9 @@ the one in myROM[4] and myROM[7], it goes over the final lines as well and termi
 5.d. 1, as explained in the previous parts, this is the last line that is ran when the program is finished since when the comparison of the value found in rg0 is compared to 0, resulting in the zero flag being set,
 this allows for the zero jump to take action. This results in the code ending up on myROM[1], which is a jump that does not move the program counter i.e. the end of the program. 
 
-5.e. The program is counting down from 15 to 0 and whenever it reaches that point, another value in a different register is decreased from 15 to 14, signaling the end of the program. 
-The assembly code is acting a loop, meaning that it can be ran without manually having to write out a subtract instruction multiple times, and instead only written once. The way the loop works
-is by comparison, as it will continue running until the value found in the register that is being looped on reaches 0. Once that occurs, the program skips over the comparion opeartion and moves on to subtract 
-a value from the second register present and finalizing the code. 
+5.e. The program is dealing with a nested loop, one if running the same operation of counting down from 15 to 0 and the bigger outside loop is running the same loop. However, the outside loop does not count down until
+the inner loop reaches to 0. If the outside loop has not finished counting down, the inner loop will restart and run again, counting down from 15 to 0, and once again the outside loop will be decreased. Eventually, the 
+outside loop will reach 0 and the code stops. 
 
 
 
