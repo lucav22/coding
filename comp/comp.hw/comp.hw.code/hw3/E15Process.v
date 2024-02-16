@@ -61,20 +61,21 @@ module E15Process(input clk);
 
    // pcIncr is a 4-bit value representing the value
    // that is to be added to the program counter
-   assign pcIncr = 4'bz; 
+   assign pcIncr = (opCode == jmp) ? immData : (opCode == jnz) ? (zFlag == 1'b0) ? immData : 1 : (opCode == jz) ? (zFlag == 1'b1) ? immData : 1 : 1; 
+
 
    // storeVal is a 4-bit value representing the value that
    // is to be stored in the destination register, for
    // instructions that write to it
-   assign storeVal = 4'bz; 
+   assign storeVal = (opCode == mov) ? operand1 : (opCode == movi) ? immData : (opCode == sub + opCode == subi + opCode == add + opCode == addi) ? aluOutput : 4'b0000 ; 
 
    // operand1 is a 4-bit value represnting the first operand
    // to be passed into the ALU
-   assign operand1 = 4'bz; 
+   assign operand1 = (opCode == cmp + opCode == mov + opCode == add + opCode == sub) ? ((src == Rg0) ? r0 : (src == Rg1) ? r1 : (src == Rg2) ? r2 : r3) : immData; 
 
    // operand1 is a 4-bit value represnting the second operand
    // to be passed into the ALU
-   assign operand2 = 4'bz; 
+   assign operand2 = (dst == Rg0) ? r0 : (dst == Rg1) ? r1 : (dst == Rg2) ? r2 : r3 ; 
 
    always @(posedge clk)
       begin 
