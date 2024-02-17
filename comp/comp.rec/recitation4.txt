@@ -1,0 +1,56 @@
+1. E20 differs from E15 by having 8 registers and having 16 bits instead of 12 bits
+   They are similar in having read/writing registers and being able to write with 2 arguments
+
+2. a. 000 001 010 100 0100
+    this instruction compares the value found in 
+    regSRCA which is $1 and the value in regsiter regSRCB which is $2
+    if $1 is less than the value in $2, then register $4 will store a 1
+    if they are not, then it will store 0,
+    all other registers remain untouched
+2. b. 010 0000000001111
+    this instruction will jump to the memory address at 15,
+    no other register will be touched
+2. c. 001 000 001 0000001
+    a pseudo instruction that will store the value of 1 in register 1
+2. d. 101 001 000 0000000
+    this will sum 0 and the value found in $1, and the result of that value
+    will the memory address where the value inside of $0 will be stored
+
+3. a. add $0, $0, $0
+adds the value found in register $0 to $0, storing it in $0
+3. b. jeq $1, $0, label
+      the place we are jumping to = pc - 1
+      label = pc - 1
+compares the values in $1 and $2, if the values are equal, 
+the operation will jump to the memory address 112
+3. c. lw  $5, 31($2)
+finds the sum of the signed number 31 and the value in $2, 
+whatever value is found in the sum address, it will then store it inside of 
+
+4. a. movi $5, 34
+4. b. add $3, $1, $2
+4. c. add $6, $5, $5
+4. d. slti $5, $4, 10
+4. e. add $1,$1, 50
+      jr $1
+4. f. slt $3, $2, $1
+      jeq $3, $0, destination
+4. g. lw $1 , 9($0)
+4. h. lw $2 , hyoid($0)
+4. i. lw $3,  0($4)
+4. j. 
+    comparison:
+        jeq $2, $0, they_are_equal
+        movi $1, 2
+        halt
+    they_are_equal:
+        jeq $3, $0, they_are_both_equal
+        movi $1, 2
+        halt
+    they_are_both_equal:
+        movi $1, 1
+
+5. $3 = 20  $4 = 70
+
+
+
