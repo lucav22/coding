@@ -229,4 +229,4 @@ def find_missing(lst):
 
 
 def find_missingc(lst):
-    lst_sum =
+    pass
