@@ -50,7 +50,7 @@ until Rg1 will reach 0.
 a. 4, stops at halt
 b. 0, does not take the jump
 c. 5 since that is the memory address 
-d. undefined, since there is no instruction assgined so its empty
+d. 7 since that is the memory address
 e. jeq is found at memory address 2
 f. rel_imm = imm - pc - 1 = 5 - 2 - 1 = 2 = 0000010
 
