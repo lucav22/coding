@@ -1,0 +1,16 @@
+myRom[0] = {movi, RXX, Rg0, 4'b0111}
+myRom[1] = {movi, Rxx, Rg1, 4'b0010}
+myRom[2] = {movi, Rxx, Rg2, 4'b0000}
+myRom[3] = {cmp, Rg0, Rg1, 4'b0000}
+myRom[4] = {jz, Rxx, Rxx, 4'b0111}
+myRom[5] = {subi, Rxx, Rg0, 4'b0001}
+myRom[6] = {jz, Rxx, Rxx, 4'b0100}
+myRom[7] = {subi, Rxx, Rg1, 4'b0001}
+myRom[8] = {jz, Rxx, Rxx, 4'b0011}
+myRom[9] = {jnz, RXX, RXX, 4'b1100}
+myRom[10] = {addi, Rxx, Rg2, 4'b0001}
+myRom[11] = {jmp, Rxx, Rxx, 4'b0000}
+myRom[12] = {jmp, Rxx, Rxx, 4'b0000}
+myRom[13] = {jmp, Rxx, Rxx, 4'b0000}
+myRom[14] = {jmp, Rxx, Rxx, 4'b0000}
+myRom[15] = {jmp, Rxx, Rxx, 4'b0000}

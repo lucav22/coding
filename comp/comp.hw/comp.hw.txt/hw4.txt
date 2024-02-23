@@ -1,0 +1,82 @@
+1. The program will return to the adress memory 0 since the comparsion between Rg0
+and itself will set the zero flag. Howeverm the jump in memory adrress 15 is a jump is zero flag is not set, 
+and since the zero flag is set, this jump will not occur but since there is no j, Rxx, Rxx, 4b'0000 to end the program
+it will simply reset the pc counter and go to the top.
+
+2. Explain less than or equal to here:
+Since we are trying to find if the values found in register 0 and register 1 are lesser than or equal, we can first check
+if they are equal to each other. If they are and set off the zero flag, it will jump to finish the program. If they are not equal, then 
+we move to subtracting 1 from each register to see which ones reaches 0 first since one is going to get there first since they are not equal. 
+If they do not reach 0, then the zero flag will not be set and the jump if zero flag is not set will get triggered and jump back to the subtraction,
+on myrom 5, and continue. If RG 0 reaches 0 first, any arithmatic functon that results in a 0, will set of the zero flag meaning that the zero flag jumps next to them
+will be actived. If the jump zero next to RG 0 activates, that means that rg0 is less than rg1 and that would jump to the addition of 1 to rg2 to ensure that its clear
+that the condition has been met. If the jump zero next to RG1 activates, that means that rg1 is greater than rg0 and thus the original value of Rg2 reamains as 0 since its not true
+and the jump will go to the end of the program.
+
+3. 
+
+a. Upgrading the E15's Program Counter (PC) from a 4-bit to a 10-bit counter is essential for supporting a larger instruction set of 1024 instructions. 
+This expansion allows the PC to address instructions ranging from 0 to 1023, thus enabling access to the entire instruction set. 
+This change has predominantly positive implications, as it directly addresses the need for a PC capable of navigating through an expanded set of instructions, without any significant drawbacks highlighted.
+
+b. To facilitate jumps within the expanded 1024 instruction space, it is necessary to revise the instruction format to 18 bits. 
+This adjustment is particularly important for jump instructions like jmp, jnz, and jz, which will require a 10-bit immediate value to specify jump locations accurately. 
+While this change primarily affects jump instructions, it ensures compatibility with the extended instruction range without necessitating alterations to the size of registers for other instructions, assuming register sizes remain unchanged. 
+This scenario presents a balanced view, acknowledging a potential limitation regarding register size adjustments, yet it underscores the adaptability of the instruction format to accommodate both small and large immediate values.
+
+c. The expansion of the instruction set and PC size does not necessitate changes to register operations, as registers do not directly store ROM locations. 
+The existing register instructions, designed for 4-bit operations, are expected to function correctly without modifications. 
+This separation of register functionality from the expanded instruction and PC sizes maintains the processor's efficiency without requiring an increase in the number of registers. 
+However, should future developments allow 10-bit immediate values in operations like addition or subtraction, a reconsideration of the 4-bit register size to accommodate 10-bit values may be warranted.
+
+d. Accommodating the new 18-bit instruction format necessitates an upgrade of the instruction memory space to 1024 x 18 bits.
+This expansion ensures that each memory location can store the full range of instructions, including those with 10-bit immediate values.
+This change is critical for ensuring comprehensive support for the extended instruction set, highlighting the importance of aligning memory capacity with the demands of the expanded instruction format.
+
+e. Adjustments to the Arithmetic Logic Units (ALUs) are required to process 10-bit values, in alignment with the changes to the PC and immediate values. 
+This update is crucial for enabling the ALUs to handle a wider range of data values, ensuring compatibility with the expanded instruction set and PC size. 
+This adaptation reflects the overarching need to update system components to support the enhanced capabilities introduced by the expansion of the instruction set and PC size.
+
+
+4. Explain multiply here:
+Since we are trying to find the multplication between both values found in Rg0 and Rg1, we can then first start by making a comparison to the value in Rg1 if the value 
+is 0 since if the value has either been finished runnning its iterations or the value itself starts off at 0, then its the end of the program and the zero flag will be set. As a result, 
+the jump will go to the end of the program. If the value in Rg1 is not 0 then the we can start subtracting from Rg1 to reduce the amount of times we need to add the number together as that is multiplication.
+The following is going to be the addition of the number to RG2 since that is where we wanna store it and it will be continously added to it on each iteration. The program will then go to the jmp command that will go back to the comparison 
+line and see if the Rg1 has reached 0 and agian will jump to the end of the program since there is not need to run through the program again; if it not zero, then it will run again and Rg2 will get another added value of Rg0. This will go on
+until Rg1 will reach 0.
+
+5.
+a. 4, stops at halt
+b. 0, does not take the jump
+c. 5 since that is the memory address 
+d. undefined, since there is no instruction assgined so its empty
+e. jeq is found at memory address 2
+f. rel_imm = imm - pc - 1 = 5 - 2 - 1 = 2 = 0000010
+
+6.
+a. j target
+   010 00000000000011
+
+b. jeq, $4, $0, target
+   110 100 000 1111001
+
+c. slti $2, $4, 10
+   sw $2, isless($0)
+   111 100 010 0001010
+   101 000 010 0000011
+
+d. lw $1, 29($0)
+   sw $1, 30($0) 
+   100 000 001 0011101
+   101 000 001 0011110       
+
+7. addi $1, $1, 1
+   add $2, $2, $2
+   halt
+
+   001 001 001 0000001
+   000 010 010 010 0000
+   010 0000000000010
+
+
