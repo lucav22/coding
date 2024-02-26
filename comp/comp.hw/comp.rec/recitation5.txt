@@ -17,7 +17,7 @@ b. 001 000 001 0000011
    010 000 000 000 0110
 
 3.
-Memory address 5 and 12: 600 = 7, 700 = 14
+Memory address 5 and 12: 5 = 7, 12 = 14
 
 4. you store the new value from the current array into register 2 NOT adding it to $2 SO IT FINDING THE MAX! $7 = 94
 
