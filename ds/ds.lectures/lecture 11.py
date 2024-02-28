@@ -43,18 +43,24 @@ def count_appearances1(lst,val):
             return rest_count
 
 
-def count_appearances2(lst, low, high, val):
-    if (low == high):
-        if (lst[low] == val):
-            return 1
+def count_appearances2(lst, val):
+    def count_appearances_helper(lst, low, high, val):
+        if (low == high):
+            if (lst[low] == val):
+                return 1
+            else:
+                return 0
         else:
-            return 0
-    else:
-       rest_count =  count_appearances2(lst, low + 1, high, val)
-        if (lst[low] == val):
-            return rest_count + 1
-        else:
-            return rest_count
+           rest_count =  count_appearances2(lst, low + 1, high, val)
+            if (lst[low] == val):
+                return rest_count + 1
+            else:
+                return rest_count
+    return count_appearances_helper(lst, 0, len(lst)-1 , val)
+
+gonna act better for the user so they understand what is going on, setting low and the highest tot he lenght of the lst
+
+
 
 
 it will will slice the lst into a smaller sub lst that will check for the values

@@ -1,8 +1,14 @@
 1. 
-    mov $1, 1099
-    mov $2, 456
+    lw $1, number1($0)
+    lw $2, number2($0)
     sw  $1, 0($2)
     halt
+
+    number1:
+    .fill 1099
+    number2:
+    .fill 456
+
 
 2.
     lw $1, 20($0)
