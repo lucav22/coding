@@ -1,0 +1,64 @@
+1. A multiplexer is similar to an if statement by being able to select what output is going to be provided given by the input.
+   A multiplexer is not similar to an if statement by not being able to take conditionals 
+
+2. The jeq instruction since the machine code that is read is encoded as rel_imm instead of imm, which the subtraction can result in a negative or positive
+value which needs to be interpreated appropiately by the program counter
+
+
+3. For jeq, the value for FUNC would be sub or 1 since we want to check both values and call the EQ control to say that the values are the same 
+   For j, the value would be or, since we are going to or the value and get the result to add to the program counter as we need to make sure that the value being added is sign extended as well
+
+4.
+a.
+FUNCalu — 0 
+MUXalu —  1
+MUXpc —  1
+MUXrf —  0
+MUXtgt —  0
+MUXdst —  0
+WErf —  1
+WEdmem — 0
+
+b.
+FUNCalu — 0 
+MUXalu —  0
+MUXpc —  0
+MUXrf —  0
+MUXtgt —  2
+MUXdst —  0
+WErf —  0
+WEdmem — 0
+
+c.
+FUNCalu — 0 
+MUXalu —  1
+MUXpc —  1
+MUXrf —  0
+MUXtgt —  2 #1
+MUXdst —  0
+WErf —  1
+WEdmem — 0
+
+5.
+ FUNCalu — 3 makes the alu do the OR operation
+ MUXalu — 0  the other values comes from the register
+ MUXpc — 3 jumps from the full lenght of the 13 bit immediate
+ MUXrf — 1 the other values from register rc
+ MUXtgt — 1 the target register gets whatever the pc counter was
+ MUXdst — 1 the written result goes to rc which is 000
+ WErf — 0 the regiester is not written
+ WEdmem — 0 and the memory is not written either
+
+j operation
+
+6.
+ FUNCalu — 2 makes the alu do the and opeartion
+ MUXalu — 0 again register value
+ MUXpc — 3 jumps full lenght, meaning jump opeartion
+ MUXrf — 1 the other values from register rc
+ MUXtgt — 1 the target register gets whatever the pc counter was
+ MUXdst — 2 the only instructin that uses register 7 is jal
+ WErf — 1 we want to store whatever data what at the moment we jump so we store is as well
+ WEdmem — 0 we dont wanna write to the memory
+
+jal operation
