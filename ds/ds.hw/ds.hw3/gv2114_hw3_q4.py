@@ -8,5 +8,8 @@ def remove_all(lst, value):
             # and the other indexes are left untouched
             pointer += 1 # everytime the index is not the value, the pointer is increased to set the new lst index
             # since the value we want to remove is not going to be present we do not need to keep up the price
-    return lst[:pointer] # the lst is sliced to the new value and no value is cut of since its
+    del lst[pointer:] # the lst is sliced to the new value and no value is cut of since its
     # already replaced
+
+lst = [1,2,3,4,4,3,2,1]
+print(remove_all(lst, 3))

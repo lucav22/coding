@@ -15,14 +15,14 @@ class ArrayList:
     def append(self, val):
         if (self.n == self.capacity):
             self.resize(2 * self.capacity)
-        self.data[self.n] = val
+        self.data_arr[self.n] = val
         self.n += 1
 
     def resize(self, new_size):
         new_array = make_array(new_size)
         for i in range(self.n):
             new_array[i] = self.data_arr[i]
-        self.data = new_array
+        self.data_arr = new_array
         self.capacity = new_size
 
     def extend(self, iter_collection):
@@ -35,18 +35,18 @@ class ArrayList:
             raise IndexError('invalid index')
         if (ind < 0):
             ind = self.n + ind
-        return self.data[ind]
+        return self.data_arr[ind]
 
     def __setitem__(self, ind, val):
         if (not (-self.n <= ind <= self.n - 1)):
             raise IndexError('invalid index')
         if (ind < 0):
             ind = self.n + ind
-        self.data[ind] = val
+        self.data_arr[ind] = val
 
 
     def __repr__(self):
-        data_as_strings = [str(self.data[i]) for i in range(self.n)]
+        data_as_strings = [str(self.data_arr[i]) for i in range(self.n)]
         return '[' + ', '.join(data_as_strings) + ']'
 
 
@@ -72,7 +72,7 @@ class ArrayList:
     def insert(self, index, val):
         if not (-self.n <= index <= self.n):  # similar implementation to set item
             # to take account of positive and negative index
-            return IndexError("Invalid index")
+            raise IndexError("Invalid index")
         if index < 0:
             index = self.n + index  # in case of negative index being set to the right position
         if self.n == self.capacity:  # if the amount of digital items are the same as physical items
@@ -91,7 +91,7 @@ class ArrayList:
         if index is None:
             index = self.n - 1  # since we are going to pop the last value
         if not (-self.n <= index < self.n):
-            return IndexError("Invalid index")
+            raise IndexError("Invalid index")
         if index < 0:
             index = self.n + index
 
