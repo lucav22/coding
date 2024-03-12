@@ -21,6 +21,11 @@ print(lst1)
 print(lst2)
 print(lst3)
 
+"1=" [10,2,[30,4]]
+"2=" [10,2,[30,4]]
+"3=" [1,2,[30,4],1,2,[30,4]]
+
+
 
 
 def func1(n):
@@ -76,3 +81,28 @@ def partition2(lst):
         else:
             greater.append(lst[i])
     return smaller + [pivot] + greater
+
+def max_and_min(lst, low, high):
+    # Base case: Only one element.
+    if low == high:
+        return [lst[low], lst[high]]  # The max and min are the same, order swapped.
+
+    else:
+        # Find the middle point to divide the array into two halves
+        mid = (low + high) // 2
+
+        # Recursive call on the first half
+        min_max_left = max_and_min(lst, low, mid)
+
+        # Recursive call on the second half
+        min_max_right = max_and_min(lst, mid+1, high)
+
+        # Find the maximum and minimum values between the two halves, order of operations adjusted
+        maximum = max(min_max_left[0], min_max_right[0])
+        minimum = min(min_max_left[1], min_max_right[1])
+
+        return [maximum, minimum]  # Return with max value first
+
+
+lst = [3,7,5,2,7,5,2]
+print(max_and_min(lst, 0, 6))
