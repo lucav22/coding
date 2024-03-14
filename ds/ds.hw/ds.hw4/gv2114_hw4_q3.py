@@ -7,14 +7,14 @@ def print_triangle(n):
         print(line)  # print out the current line present
 
 
-def print_opposite_triangle(n):
+def print_opposite_triangles(n):
     if n == 1:
         print('*')
         print('*')
     else:
         line = n * '*'
         print(line)
-        print_opposite_triangle(n - 1)  # needs to add another start to initiate the second recursive call
+        print_opposite_triangles(n - 1)  # needs to add another start to initiate the second recursive call
         print(line)
 
 
