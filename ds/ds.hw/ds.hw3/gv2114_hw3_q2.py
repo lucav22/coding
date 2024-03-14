@@ -87,7 +87,7 @@ class ArrayList:
         self.data_arr[index] = val  # there is a "space" created for the value and no value will be lost
         self.n += 1
 
-    def pop(self, index=None):
+    def pop(self, index=None): #exam 1 question
         if index is None:
             index = self.n - 1  # since we are going to pop the last value
         if not (-self.n <= index < self.n):

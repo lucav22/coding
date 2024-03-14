@@ -19,7 +19,7 @@ def isPowerOfTwo(n):
     return isPowerOfTwo(n/2) # log time is always dividing by two
 
 
-def split_parity(lst, low, high):
+def split_parity(lst, low, high): #exam 1 question
     if low <= high:
         if lst[low] % 2 != 0 and lst[high] % 2 == 0:
             lst[low],lst[high] = lst[high] , lst[low]
