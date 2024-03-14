@@ -10,6 +10,7 @@ def print_triangle(n):
 def print_opposite_triangle(n):
     if n == 1:
         print('*')
+        print('*')
     else:
         line = n * '*'
         print(line)
@@ -17,12 +18,17 @@ def print_opposite_triangle(n):
         print(line)
 
 
-def print_ruler(n):
-    if n == (2 ** n - 1):
+def print_ruler(n): # similar approach to other recursions calls
+    if n == 1:
         print('-')
-    else:
-        line = n * ''
+        return
+
+    print_ruler(n - 1) # ensures that the first half is done accordingly
+
+    print('-' * n) # multiplies the dashes by the current amount of n
+
+    print_ruler(n - 1) # once that half is dones, the bottom half is done, and the middle point is
+    # the starting point for this bottom half
 
 
-print_triangle(4)
-print_opposite_triangle(4)
+
