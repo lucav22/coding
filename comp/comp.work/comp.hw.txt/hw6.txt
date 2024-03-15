@@ -1,0 +1,39 @@
+1. 
+FUNCalu: 0
+MUXalu: 0
+MUXpc: 1
+MUXrf: 0
+MUXtgt: Irrelevant
+MUXdst: Does not matter
+WErf: 0
+WEdmem: 1
+MUXSRC1 = 1
+
+Reasoning: 
+
+A new 2:1 multiplexer is required to handle the inputs from the SRC1 dataout and the 7-bit sign-extended output. 
+This multiplexer will then direct its output to the memory's dataIN. 
+Depending on the control signal, the multiplexer will select its input as follows: if the control signal is set to 1, the 7-bit sign-extended output is chosen;
+if the control signal is 0, the output from SRC1 dataout is selected.
+
+2. Computer B runs the programs faster than Computer A by about 20%. The reason 
+for this being that Computer B is more efficinet by having a lower CPI as the equation 
+to find the performance is P = Clockrate/CPI. The numbers from this come out to be that Computer A 
+can do 1.25 billion instructions per second compared to Computer B doing 1.5 billion instructions.
+
+3.
+Execution Stage: 
+IF: 0
+ID : 1
+Exec: 3
+MEM: 5
+
+Control Signals (Specified since its the last execuation stage and these matter the most):
+WEpc = 1
+MUXpc = 2
+
+Reasoning: 
+
+We need to connect a wire from the dataOut output of the memory to the MuxPC input. As a result of adding an additional input to the MUX, 
+we must include an extra bit in the MUX's control logic to allow selection among three possible inputs. 
+When the control signal for MuxPC is set to 2, the value from dataOut will be routed to the Program Counter (PC).
