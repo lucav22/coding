@@ -14,7 +14,7 @@ prefix (polish) notation: similar but the functions go before they are done
 !!!! TIP TO DO THIS IS START RIGHT TO LEFT UNTIL THE FIRST FUNCTION AND CONTINUE WORKING
 /*+52-834 (this means that from the subtraction sign to 8 and 3 are done) then
 +52 are done since its done next and then * form the results of the previous functions
-and then / with the 4
+and then / with the 4 ( also closest to each function not the farthest away
 postfix notation: similar to prefix notation but in the sense that it goes
 from left to right and u choose the first function that comes in line dosent matter where
 but the first one
