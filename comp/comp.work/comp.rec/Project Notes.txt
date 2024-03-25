@@ -1,0 +1,12 @@
+#include <cstdint>
+
+
+int main() {
+    std :: uint16_t my int = 0x0;
+    myint -= 1;
+    std :: print("0x{4L0x}\n", myint);
+}
+
+DO NOT SHIFT BINARY TO STRINGS (Utilize shifts)
+
+Anubis utilize the vea option 
